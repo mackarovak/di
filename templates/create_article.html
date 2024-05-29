@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Добавление</title>
+{% endblock %}
+
+{% block body %} 
+
+<style>
+   .black-button {
+            background-color: rgb(54, 109, 192);
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+</style>
+<div class="container" style="margin-top: 80px;">
+    <h1>Добавление товара</h1>
+    <form method="post" enctype="multipart/form-data">
+        <input type="text" name="name" id="name" class="form-control" placeholder="Введите название товара"><br>
+        <textarea name="text" id="text" class="form-control" placeholder="Введите описание товара"></textarea><br>
+        <textarea name="price" id="price" class="form-control" placeholder="Введите стоимость товара"></textarea><br>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <ul class="flash-messages">
+            {% for message in messages %}
+              <li class="flash-message">{{ message }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endwith %}
+        <input type="submit" class="black-button" value="Добавить">
+    </form>
+</div>
+{% endblock %}

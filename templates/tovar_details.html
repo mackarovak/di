@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block body %} 
+
+<style>
+    .container {
+        background-color: rgb(102, 160, 214);
+        color: white;
+        padding: 20px;
+    }
+    
+    .black-button {
+        background-color: white;
+        color: black;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+    p {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500; /* увеличение жирности шрифта текста */
+        font-size: 2rem; /* увеличение размера шрифта текста */
+    }
+</style>
+<div class="container mt-5" style="margin-top: 90px;">
+    <h1>{{ tovar.name }}</h1>
+    <div class="alert">
+        <p>{{ tovar.text }}</p>    
+        <p>{{ tovar.price }}</p>
+        {% if current_user.role == 'Администратор' %}
+        <a href="/tovars/{{ tovar.id }}/delete" class="black-button" style="margin-top: 20px;">Удалить</a>
+        <a href="/tovars/{{ tovar.id }}/update" class="black-button">Редактировать</a>
+        {% endif %}
+        {% if current_user.role == 'Пользователь' %}
+        <a href="{{ url_for('add_to_cart', id=tovar.id) }}" class="black-button">Добавить в корзину</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Мировой магазин недвижимости</title>
+{% endblock %}
+
+{% block body %}
+<style>
+    body {
+        background-image: url("{{ url_for('static', filename='image3.jpg') }}");
+        background-size: cover;
+        background-position: top;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #000000;
+    }
+
+    h1, h2 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 900;
+        font-size: 3.5rem;
+    }
+
+    p {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 500;
+        font-size: 2rem;
+    }
+</style>
+
+<div class="container mt-5" style="margin-top: 80px; background-color: white; padding: 20px;">
+    <h1 class="text-center">Магазин недвижимости</h1>
+
+    
+    <div class="section text-center">
+        <h2>О нас</h2>
+        <p class="font-weight-normal">Мы - ваш проводник в мире недвижимости по всему миру. Наш магазин предлагает широкий выбор жилья высокого качества в разных странах и городах.</p>
+    </div>
+
+    <div class="section text-center">
+        <h2>Описание магазина</h2>
+        <p class="font-weight-normal">Наш магазин специализируется на продаже квартир, домов, вилл и других объектов недвижимости по всему миру. Мы предлагаем разнообразные варианты жилья, от уютных студий до роскошных резиденций.</p>
+        <p class="font-weight-normal">Мы гарантируем проверенное качество каждого объекта, помогаем с оформлением сделок и предоставляем консультации по покупке недвижимости за рубежом.</p>
+    </div>
+
+    <div class="section text-center">
+        <h2>Наши контакты:</h2>
+        <p>Адрес: Улица Международная, Москва, Россия</p>
+        <p>Телефон: +7-905-333-55-55</p>
+        <p>Email: <a href="mailto:globalrealty@gmail.com">globalrealty@gmail.com</a></p>
+    </div>
+
+</div>
+{% endblock %}

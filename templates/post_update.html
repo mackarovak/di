@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Обновление информации о товаре</title>
+{% endblock %}
+
+{% block body %} 
+
+<style>
+    .black-button {
+            background-color: rgb(28, 126, 195);
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+</style>
+<div class="container mt-5" style="margin-top: 80px;">
+    <h1>Обновление информации о товаре</h1>
+    <form method="post">
+        <input type="text" name="name" id="name" class="form-control" value="{{ tovar.name }}" placeholder="Введите название товара"><br>
+        <textarea name="text" id="text" class="form-control" placeholder="Введите описание товара">{{ tovar.text }}</textarea><br>
+        <textarea name="price" id="price" class="form-control" placeholder="Введите стоимость товара">{{ tovar.price }}</textarea><br>
+        <input type="submit" class="black-button" value="Обновить">
+    </form>
+</div>
+{% endblock %}
+
+

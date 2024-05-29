@@ -1,0 +1,42 @@
+
+{% extends 'base.html' %}
+
+{% block body %} 
+
+<style>
+    p {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+    }
+    .black-button {
+            background-color: rgb(53, 134, 205);
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+</style>
+
+<div class="container mt-5" style="margin-top: 80px; max-width: 600px;">
+    <h1>Оставить заявку на партнерство</h1>
+    <form>
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" class="form-control" placeholder="Введите ваше имя">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" class="form-control" placeholder="Введите ваш email">
+        </div>
+        <div class="form-group">
+            <label for="message">Сообщение:</label>
+            <textarea id="message" class="form-control" placeholder="Введите ваше сообщение"></textarea>
+        </div>
+        <button type="submit" class="black-button">Отправить заявку</button>
+    </form>
+</div>
+
+{% endblock %}

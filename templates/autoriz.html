@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %} 
+    <div class="container" style="height: 100vh; display: flex; align-items: center; justify-content: center; color: #fff;">
+        <div class="col-md-6" style="background-color: #007bff; padding: 20px; border-radius: 5px;">
+            <h1 class="text-center">Вход</h1>
+            <div class="login-form">
+                <form action="{{ url_for('autoriz') }}" method="POST">
+                    <div class="form-group">
+                        <label for="username">Имя пользователя:</label>
+                        <input type="text" name="username" id="username" class="form-control" required style="background-color: #fff; color: #000;">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Пароль:</label>
+                        <input type="password" name="password" id="password" class="form-control" required style="background-color: #fff; color: #000;">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" style="background-color: #054a78; color: #fff; border: 1px solid #2980b9; border-radius: 0;">Войти</button>
+                </form>
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    <ul class="flash-messages">
+                      {% for message in messages %}
+                        <li class="flash-message">{{ message }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                {% endwith %}
+                <p class="text-center">Еще не зарегистрированы? <a href="{{ url_for('add_user') }}" style="color: #fff;">Зарегистрироваться</a></p>
+            </div>
+        </div>
+    </div>
+{% endblock %}

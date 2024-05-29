@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %} 
+<style>
+    .page-title {
+        margin-bottom: 30px;
+    }
+
+    .container-content {
+        margin-bottom: 30px;
+    }
+</style>
+
+<div class="container mt-5 container-content" style="margin-top: 80px;">
+    <h1 class="text-center border-bottom pb-4 text-white page-title" style="color: #007bff;">Все товары на сайте</h1>
+    {% if tovarys|length > 0 %}
+    <div class="row">
+        {% for el in tovarys %}
+        <div class="col-sm-4 mb-4">
+            <div class="alert alert-info" style="background-color: #007bff; color: white;">
+                <h2 style="margin-bottom: 10px; color: #fff;">{{ el.name }}</h2>
+                <p class="text-muted" style="margin-bottom: 20px; color:white;">{{ el.price }}</p>
+                <img src="{{ get_image_path(el.name + '.jpeg') }}" alt="Изображение товара" class="img-fluid" style="max-width: 300px; margin-bottom: 20px;">
+                <a href="/tovars/{{ el.id }}" class="btn btn-light" style="background-color: white; color: black; border-color: #29d8f3;">Описание товара</a>
+                {% if current_user.role == 'Пользователь' %}
+                    <a href="{{ url_for('add_to_cart', id=el.id) }}" class="btn btn-primary" style="background-color: #007bff; color: white;">Добавить в корзину</a>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>У нас еще нет товаров на сайте</p>
+    {% endif %}
+</div>
+{% endblock %}

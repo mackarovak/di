@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  {% block title %}{% endblock %}
+  
+  <style>
+    body {
+      background-color: #cfe2f3; /* Голубой фон */
+      color: black;
+      font-family: Arial, sans-serif;
+    }
+    
+    .button-container {
+        position: fixed;
+        top: 10px; /* Положение вверху */
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .large-button {
+        font-size: 18px;
+        padding: 15px 20px;
+        margin: 10px;
+        border-radius: 0; /* Квадратные углы */
+        background-color: #007bff; /* Голубой цвет кнопки */
+        color: white;
+        border: 2px solid #007bff; /* Голубая рамка */
+      }
+
+  </style>
+</head>
+<body>
+    {% block body %}{% endblock %}
+    <div class="button-container">
+        {% if current_user.role == 'Администратор' %}
+        <button class="btn btn-default large-button" onclick="window.location.href = '/create_article';">Добавить товар</button>
+        {% endif %}
+        {% if current_user.role == 'Пользователь' %}
+        <button class="btn btn-default large-button" onclick="window.location.href = '/cart';">Корзина</button>
+        <button class="btn btn-default large-button" onclick="window.location.href = '/patner';">Стать партнером</button>
+        {% endif %}
+        <button class="btn btn-default large-button" onclick="window.location.href = '/tovars';">Товары</button>
+        <button class="btn btn-default large-button" onclick="window.location.href = '/about';">Про магазин</button>
+        {% if not current_user.is_authenticated %}
+        <button class="btn btn-default large-button" onclick="window.location.href = '/autoriz';">Вход</button>
+        {% endif %}
+        <button class="btn btn-default large-button" onclick="window.location.href = '/';">Главная</button>
+        {% if current_user.is_authenticated %}
+        <button class="btn btn-default large-button" onclick="window.location.href = '/profile';">Профиль</button>
+        {% endif %}
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+   
+</body>
+</html>

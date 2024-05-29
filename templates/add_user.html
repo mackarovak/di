@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block body %} 
+
+    <div class="container" style="height: 100vh; display: flex; align-items: center; justify-content: center;">
+        <div class="col-md-6">
+            <h1 class="text-center">Добавить пользователя</h1>
+            <form method="POST" action="/add_user" onsubmit="return validateForm()">
+                <div class="form-group">
+                    <label for="username">Имя пользователя:</label>
+                    <input type="text" name="username" id="username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" name="password" id="password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="role">Роль:</label>
+                    <input type="text" name="role" id="role" class="form-control" required placeholder="Пользователь или Администратор">
+                </div>
+                {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                <ul class="flash-messages">
+                  {% for message in messages %}
+                    <li class="flash-message">{{ message }}</li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            {% endwith %}
+            <button type="submit" class="btn btn-primary btn-block" style="background-color: #115a8b; color: #fff; border: 1px solid #2980b9; border-radius: 0;">Зарегистрироваться</button>
+        </form>
+        </div>
+    </div>
+
+    <script>
+        function validateForm() {
+            var role = document.getElementById("role").value;
+            if (role != "Пользователь" && role != "Администратор") {
+                alert("Пожалуйста, выберите роль Пользователь или Администратор");
+                return false;
+            }
+        }
+    </script>
+{% endblock %}

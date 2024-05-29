@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %} 
+
+<style>
+    p {
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 700;
+        font-size: 2.5rem;
+    }
+    .black-button {
+        background-color: white;
+        color: black;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+    }
+</style>
+
+<div class="container mt-5" style="margin-top: 80px; max-width: 600px;">
+    <h1>Корзина</h1>
+    <ul class="list-group">
+        {% for tovar in tovar_items %}
+        <li class="list-group-item">
+            <p>{{ tovar.name }}</p>
+            <img src="{{ get_image_path(tovar.name + '.jpeg') }}" alt="Изображение товара" style="max-width: 300px; max-height: 300px;">
+            <button onclick="window.location.href='{{ url_for('remove_from_cart', id=tovar.id) }}'" class="black-button">Удалить</button>        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
